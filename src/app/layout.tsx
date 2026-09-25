@@ -25,34 +25,78 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: 'swap',
 });
 
+const SITE_URL = 'https://vlsfibre.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'VLS Fibre | Industrial Lining & Composite Manufacturing',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'VLS Fibre | Industrial FRP & Dual-Laminate Process Equipment',
+    template: '%s | VLS Fibre'
+  },
   description:
-    'VLS Fibre is an industry-leading manufacturer of industrial FRP & dual-laminate solutions, reaction vessels, storage tanks, scrubbers, and PPRC & HDPE electro-fusion pipelines across India.',
+    'VLS Fibre — India\'s leading manufacturer of custom FRP & dual-laminate chemical process equipment. Storage tanks up to 120 kL, reaction vessels, fume scrubbers, HDPE spiral tankers. ASME RTP-1 & BS 4994 compliant.',
   keywords: [
     'VLS Fibre',
-    'Industrial Lining',
-    'FRP tanks',
-    'chemical reaction vessels',
+    'FRP tanks India',
     'dual laminate tanks',
+    'chemical reaction vessels',
+    'FRP storage tank manufacturer',
     'fume scrubbers',
+    'HDPE spiral acid tanker',
+    'PP FRP vessel',
+    'industrial lining',
+    'ASME RTP-1',
+    'BS 4994',
+    'corrosion resistant equipment',
     'PPRC HDPE electro fusion pipelines'
   ],
   authors: [{ name: 'VLS Fibre Engineering Desk' }],
+  creator: 'VLS Fibre Industries',
+  publisher: 'VLS Fibre Industries',
   openGraph: {
-    title: 'VLS Fibre | Industrial Lining & Composite Manufacturing',
-    description: 'Corrosion resistant solutions for storage, process vessels, and electro-fusion pipeline engineering.',
     type: 'website',
+    locale: 'en_IN',
+    url: SITE_URL,
+    siteName: 'VLS Fibre Industries',
+    title: 'VLS Fibre — Custom FRP & Dual-Laminate Process Equipment',
+    description: 'India\'s premier manufacturer of corrosion-resistant FRP storage tanks, reaction vessels, fume scrubbers & HDPE spiral tankers. ASME RTP-1 | BS 4994 | ISO 9001:2015 certified.',
+    images: [
+      {
+        url: '/images/brand/og-cover.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'VLS Fibre — Industrial FRP & Dual-Laminate Process Equipment | Storage Tanks, Reaction Vessels, Fume Scrubbers',
+        type: 'image/jpeg',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VLS Fibre — Custom FRP & Dual-Laminate Process Equipment',
+    description: 'India\'s premier manufacturer of corrosion-resistant FRP storage tanks, reaction vessels & fume scrubbers. ASME RTP-1 | BS 4994.',
+    images: ['/images/brand/og-cover.jpg'],
+    creator: '@vlsfibre',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   icons: {
     icon: [
-      { url: '/favicon.ico?v=2', sizes: 'any' },
-      { url: '/favicon.png?v=2', sizes: '32x32', type: 'image/png' },
-      { url: '/icon-192.png?v=2', sizes: '192x192', type: 'image/png' },
-      { url: '/images/brand/vls-favicon.png?v=2', sizes: '512x512', type: 'image/png' },
+      { url: '/favicon.ico?v=3', sizes: 'any' },
+      { url: '/favicon.png?v=3', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-192.png?v=3', sizes: '192x192', type: 'image/png' },
+      { url: '/images/brand/vls-favicon.png?v=3', sizes: '512x512', type: 'image/png' },
     ],
-    shortcut: '/favicon.ico?v=2',
-    apple: '/apple-touch-icon.png?v=2',
+    shortcut: '/favicon.ico?v=3',
+    apple: '/apple-touch-icon.png?v=3',
   },
 };
 
@@ -68,9 +112,9 @@ export default function RootLayout({
       className={`${inter.variable} ${plusJakarta.variable} antialiased`}
     >
       <head>
-        <link rel="icon" href="/favicon.ico?v=2" sizes="any" />
-        <link rel="icon" href="/favicon.png?v=2" type="image/png" sizes="32x32" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" sizes="180x180" />
+        <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
+        <link rel="icon" href="/favicon.png?v=3" type="image/png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" sizes="180x180" />
       </head>
       <body
         suppressHydrationWarning
