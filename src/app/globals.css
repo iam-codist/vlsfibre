@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #1f2633;
+    --primary: #65b32e;
+    --primary-hover: #549824;
+    --brand-green: #65b32e;
+    --brand-dark: #1f2633;
+    --brand-slate: #2b3445;
+    --soft-green: #f2f8ec;
+    --card: #ffffff;
+    --border: #e2e8f0;
+  }
+
+  * {
+    border-color: #e2e8f0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #334155;
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Modern Enterprise Display Typography */
+.font-display {
+  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+/* Clean Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #65b32e;
+}
+
+/* Subtle Industrial Engineering Background Patterns (Client Brochure Theme) */
+.pattern-dots {
+  background-image: radial-gradient(rgba(101, 179, 46, 0.12) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.pattern-fiber-weave {
+  background-image: repeating-linear-gradient(45deg, rgba(31, 38, 51, 0.03) 0, rgba(31, 38, 51, 0.03) 1px, transparent 0, transparent 40px),
+                    repeating-linear-gradient(-45deg, rgba(101, 179, 46, 0.03) 0, rgba(101, 179, 46, 0.03) 1px, transparent 0, transparent 40px);
+  background-size: 40px 40px;
+}
+
+.pattern-technical-grid {
+  background-image: linear-gradient(to right, rgba(31, 38, 51, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(31, 38, 51, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Lenis Smooth Scroll Foundation */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
