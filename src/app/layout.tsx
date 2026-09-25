@@ -8,6 +8,7 @@ import SmoothScroll from '@/components/SmoothScroll';
 import { LanguageProvider } from '@/context/LanguageContext';
 import CookieBanner from '@/components/ui/CookieBanner';
 import AutoLeadModal from '@/components/forms/AutoLeadModal';
+import SiteLoader from '@/components/ui/SiteLoader';
 import Script from 'next/script';
 
 const inter = Inter({
@@ -75,6 +76,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className="min-h-screen bg-white text-slate-800 flex flex-col font-sans selection:bg-[#65B32E] selection:text-white"
       >
+        <SiteLoader />
         <LanguageProvider>
           <SmoothScroll>
             <Navbar />

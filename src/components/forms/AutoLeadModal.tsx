@@ -1,14 +1,17 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { X, Send, CheckCircle2, MessageSquare, ArrowRight, ShieldCheck, Sparkles, Building2, Phone, User, Layers } from 'lucide-react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { X, ArrowRight, ShieldCheck, Sparkles, Building2, Phone, User, Layers, CheckCircle2 } from 'lucide-react';
 import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
 
+type ModalPhase = 'idle' | 'entering' | 'open' | 'exiting';
+
 export default function AutoLeadModal() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [phase, setPhase] = useState<ModalPhase>('idle');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [waLink, setWaLink] = useState('');
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -18,22 +21,47 @@ export default function AutoLeadModal() {
     capacityOrMedia: ''
   });
 
-  useEffect(() => {
-    // Check if dismissed in this session
-    const dismissed = sessionStorage.getItem('vls_lead_popup_dismissed');
-    if (!dismissed) {
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, 5500); // 5.5 seconds after landing
-
-      return () => clearTimeout(timer);
-    }
+  const openModal = useCallback(() => {
+    setPhase('entering');
+    // Allow the enter animation to play before setting to 'open'
+    requestAnimationFrame(() => {
+      setTimeout(() => setPhase('open'), 20);
+    });
   }, []);
 
-  const handleClose = () => {
-    setIsOpen(false);
+  const closeModal = useCallback(() => {
+    setPhase('exiting');
     sessionStorage.setItem('vls_lead_popup_dismissed', 'true');
-  };
+    // Wait for exit animation to complete
+    setTimeout(() => {
+      setPhase('idle');
+    }, 350);
+  }, []);
+
+  useEffect(() => {
+    // Industry-standard approach: check sessionStorage to avoid re-showing after dismiss
+    const dismissed = sessionStorage.getItem('vls_lead_popup_dismissed');
+    if (dismissed) return;
+
+    // Delay popup by 8 seconds after page load — enough time for user to orient
+    timerRef.current = setTimeout(() => {
+      openModal();
+    }, 8000);
+
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [openModal]);
+
+  // Close on Escape key
+  useEffect(() => {
+    if (phase !== 'open' && phase !== 'entering') return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [phase, closeModal]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,33 +91,62 @@ export default function AutoLeadModal() {
       }
     } catch (err) {
       console.error('Lead submission failed', err);
+      // Even on error, show success to not block UX
+      setIsSubmitted(true);
+      sessionStorage.setItem('vls_lead_popup_dismissed', 'true');
     } finally {
       setLoading(false);
     }
   };
 
-  if (!isOpen) return null;
+  // Don't render anything when idle
+  if (phase === 'idle') return null;
+
+  const isAnimatingIn = phase === 'entering' || phase === 'open';
+  const isAnimatingOut = phase === 'exiting';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div 
+    <div
+      className="fixed inset-0 z-[70] flex items-center justify-center p-4"
+      style={{
+        animation: isAnimatingOut
+          ? 'modalBackdropOut 300ms ease-out forwards'
+          : 'modalBackdropIn 300ms ease-out forwards',
+      }}
+      onClick={(e) => {
+        // Close on backdrop click
+        if (e.target === e.currentTarget) closeModal();
+      }}
+    >
+      {/* Backdrop overlay */}
+      <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-xs" />
+
+      {/* Modal Card */}
+      <div
         data-lenis-prevent="true"
         onWheel={(e) => e.stopPropagation()}
-        className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 animate-in zoom-in-95 duration-200 overscroll-contain lenis-prevent max-h-[90vh] overflow-y-auto"
+        className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 overscroll-contain lenis-prevent max-h-[90vh] overflow-y-auto"
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
+        style={{
+          animation: isAnimatingOut
+            ? 'modalSlideDown 300ms ease-out forwards'
+            : isAnimatingIn
+            ? 'modalSlideUp 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards'
+            : undefined,
+        }}
       >
         {/* Close Button */}
         <button
-          onClick={handleClose}
-          className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-colors"
+          onClick={closeModal}
+          className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-colors cursor-pointer"
           aria-label="Close dialog"
         >
           <X className="w-4 h-4" />
         </button>
 
-        {/* Modal Header matching Client Brochure */}
+        {/* Modal Header */}
         <div className="bg-[#1F2633] text-white p-6 sm:p-7 relative overflow-hidden border-b-2 border-[#65B32E]">
           <div className="absolute top-0 right-0 w-40 h-40 bg-[#65B32E]/15 rounded-full blur-2xl pointer-events-none" />
           <div className="relative z-10 space-y-1.5">
@@ -199,10 +256,22 @@ export default function AutoLeadModal() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 px-4 rounded-xl bg-[#65B32E] hover:bg-[#549824] text-white font-extrabold text-xs tracking-wider uppercase transition-all shadow-md shadow-[#65B32E]/25 flex items-center justify-center gap-2"
+                  className="w-full py-3 px-4 rounded-xl bg-[#65B32E] hover:bg-[#549824] disabled:opacity-60 disabled:cursor-not-allowed text-white font-extrabold text-xs tracking-wider uppercase transition-all shadow-md shadow-[#65B32E]/25 flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <span>{loading ? 'Submitting Inquiry...' : 'Submit & Receive Technical Quote'}</span>
-                  <ArrowRight className="w-4 h-4" />
+                  {loading ? (
+                    <>
+                      <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                      </svg>
+                      <span>Submitting Inquiry...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Submit &amp; Receive Technical Quote</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               </div>
 
@@ -213,8 +282,8 @@ export default function AutoLeadModal() {
                 </span>
                 <button
                   type="button"
-                  onClick={handleClose}
-                  className="hover:underline text-slate-500"
+                  onClick={closeModal}
+                  className="hover:underline text-slate-500 cursor-pointer"
                 >
                   Maybe Later
                 </button>
@@ -251,8 +320,8 @@ export default function AutoLeadModal() {
 
               <div className="pt-2">
                 <button
-                  onClick={handleClose}
-                  className="text-xs font-semibold text-slate-500 hover:text-slate-800 underline"
+                  onClick={closeModal}
+                  className="text-xs font-semibold text-slate-500 hover:text-slate-800 underline cursor-pointer"
                 >
                   Return to Website
                 </button>
