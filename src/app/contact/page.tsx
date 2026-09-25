@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-white pt-32 pb-20 relative overflow-hidden">
+    <div className="min-h-screen bg-white pt-36 sm:pt-40 pb-20 relative overflow-hidden">
       {/* Background Engineering Pattern */}
       <div className="absolute inset-0 pattern-dots opacity-30 pointer-events-none" />
       <div className="absolute inset-0 pattern-fiber-weave opacity-20 pointer-events-none" />

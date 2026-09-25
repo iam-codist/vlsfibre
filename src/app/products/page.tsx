@@ -42,7 +42,7 @@ export default function ProductsPage() {
   }, [selectedCategory, selectedMaterial, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] pt-28 pb-20 industrial-grid">
+    <div className="min-h-screen bg-[#f8fafc] pt-36 sm:pt-40 pb-20 industrial-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mb-10 space-y-3">

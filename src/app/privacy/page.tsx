@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="min-h-screen bg-white text-slate-800 pt-32 pb-24">
+    <main className="min-h-screen bg-white text-slate-800 pt-36 sm:pt-40 pb-24">
       {/* Header Banner */}
       <div className="bg-[#F2F8EC] border-b border-[#65B32E]/20 py-14 relative overflow-hidden">
         <div className="absolute inset-0 opacity-30 pattern-dots pointer-events-none" />

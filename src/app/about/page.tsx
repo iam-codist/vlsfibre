@@ -67,7 +67,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] pt-28 pb-20 industrial-grid">
+    <div className="min-h-screen bg-[#f8fafc] pt-36 sm:pt-40 pb-20 industrial-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         {/* Header */}
         <div className="max-w-3xl space-y-3">
