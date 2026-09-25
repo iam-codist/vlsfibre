@@ -25,6 +25,16 @@ export const SUPPORTED_LANGUAGES: Language[] = [
 // Product names, chemical resin grades, and engineering standards are strictly preserved in English
 export const TRANSLATIONS: Record<string, Record<string, string>> = {
   // Navigation
+  'nav.home': {
+    en: 'Home',
+    hi: 'होम',
+    ta: 'முகப்பு',
+    de: 'Startseite',
+    fr: 'Accueil',
+    es: 'Inicio',
+    ar: 'الرئيسية',
+    ja: 'ホーム'
+  },
   'nav.markets': {
     en: 'Markets',
     hi: 'उद्योग क्षेत्र',

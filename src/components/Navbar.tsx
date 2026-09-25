@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { 
   Menu, 
   X, 
@@ -27,12 +28,18 @@ import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
 
 export default function Navbar() {
   const { t } = useLanguage();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [productsOpen, setProductsOpen] = useState(false);
   const [marketsOpen, setMarketsOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const isActive = (path: string) => {
+    if (path === '/') return pathname === '/';
+    return pathname.startsWith(path);
+  };
   
   const lastScrollY = useRef(0);
   const menuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -180,6 +187,18 @@ export default function Navbar() {
 
               {/* Desktop Navigation Links */}
               <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-[13px] font-semibold text-slate-700">
+                {/* Home Link */}
+                <Link
+                  href="/"
+                  className={`px-3.5 py-2 rounded-full transition-all duration-200 ${
+                    isActive('/')
+                      ? 'bg-[#F2F8EC] text-[#3B6E16] font-bold border border-[#65B32E]/30 shadow-2xs'
+                      : 'hover:text-[#65B32E] hover:bg-slate-50'
+                  }`}
+                >
+                  {t('nav.home')}
+                </Link>
+
                 {/* Markets Dropdown */}
                 <div
                   className="relative"
@@ -253,8 +272,8 @@ export default function Navbar() {
                 >
                   <button
                     className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full transition-all duration-200 ${
-                      productsOpen
-                        ? 'bg-[#F2F8EC] text-[#3B6E16] font-bold'
+                      productsOpen || isActive('/products')
+                        ? 'bg-[#F2F8EC] text-[#3B6E16] font-bold border border-[#65B32E]/30 shadow-2xs'
                         : 'hover:text-[#65B32E] hover:bg-slate-50'
                     }`}
                     onClick={() => setProductsOpen(!productsOpen)}
@@ -262,8 +281,8 @@ export default function Navbar() {
                   >
                     <span>{t('nav.products')}</span>
                     <ChevronDown
-                      className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-300 ${
-                        productsOpen ? 'rotate-180 text-[#65B32E]' : ''
+                      className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                        productsOpen ? 'rotate-180 text-[#65B32E]' : (isActive('/products') ? 'text-[#3B6E16]' : 'text-slate-400')
                       }`}
                     />
                   </button>
@@ -390,14 +409,22 @@ export default function Navbar() {
 
                 <Link 
                   href="/gallery" 
-                  className="px-3.5 py-2 rounded-full hover:text-[#65B32E] hover:bg-slate-50 transition-colors"
+                  className={`px-3.5 py-2 rounded-full transition-all duration-200 ${
+                    isActive('/gallery')
+                      ? 'bg-[#F2F8EC] text-[#3B6E16] font-bold border border-[#65B32E]/30 shadow-2xs'
+                      : 'hover:text-[#65B32E] hover:bg-slate-50'
+                  }`}
                 >
                   {t('nav.projects')}
                 </Link>
 
                 <Link 
                   href="/about" 
-                  className="px-3.5 py-2 rounded-full hover:text-[#65B32E] hover:bg-slate-50 transition-colors"
+                  className={`px-3.5 py-2 rounded-full transition-all duration-200 ${
+                    isActive('/about')
+                      ? 'bg-[#F2F8EC] text-[#3B6E16] font-bold border border-[#65B32E]/30 shadow-2xs'
+                      : 'hover:text-[#65B32E] hover:bg-slate-50'
+                  }`}
                 >
                   {t('nav.about')}
                 </Link>
@@ -409,7 +436,9 @@ export default function Navbar() {
 
                 <Link
                   href="/contact"
-                  className="relative group overflow-hidden px-7 py-2.5 rounded-full bg-gradient-to-r from-[#65B32E] to-[#549824] hover:from-[#549824] hover:to-[#437a1c] text-white text-xs font-extrabold tracking-wider uppercase transition-all duration-300 shadow-md shadow-[#65B32E]/25 hover:shadow-lg hover:shadow-[#65B32E]/35 active:scale-95"
+                  className={`relative group overflow-hidden px-7 py-2.5 rounded-full bg-gradient-to-r from-[#65B32E] to-[#549824] hover:from-[#549824] hover:to-[#437a1c] text-white text-xs font-extrabold tracking-wider uppercase transition-all duration-300 shadow-md shadow-[#65B32E]/25 hover:shadow-lg hover:shadow-[#65B32E]/35 active:scale-95 ${
+                    isActive('/contact') ? 'ring-2 ring-[#65B32E] ring-offset-2 ring-offset-white' : ''
+                  }`}
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     <span>{t('nav.contact')}</span>
@@ -443,49 +472,60 @@ export default function Navbar() {
           onWheel={(e) => e.stopPropagation()}
           className="fixed inset-0 z-40 bg-white/98 backdrop-blur-2xl flex flex-col pt-24 pb-8 px-6 overflow-y-auto lg:hidden animate-in fade-in duration-200 overscroll-contain lenis-prevent"
         >
-          <div className="space-y-4">
+          <div className="space-y-2">
             <Link
               href="/"
-              className="block text-lg font-bold text-slate-900 border-b border-slate-100 pb-3"
+              className={`flex items-center justify-between text-base font-bold py-3 px-3.5 rounded-2xl transition-all border ${
+                isActive('/')
+                  ? 'bg-[#F2F8EC] text-[#3B6E16] border-[#65B32E]/40 font-extrabold shadow-2xs'
+                  : 'text-slate-800 hover:text-[#65B32E] hover:bg-slate-50 border-slate-100'
+              }`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Home
+              <span>{t('nav.home')}</span>
+              {isActive('/') && <span className="w-2 h-2 rounded-full bg-[#65B32E]" />}
             </Link>
+
             <Link
               href="/products"
-              className="block text-lg font-bold text-slate-900 border-b border-slate-100 pb-3"
+              className={`flex items-center justify-between text-base font-bold py-3 px-3.5 rounded-2xl transition-all border ${
+                isActive('/products')
+                  ? 'bg-[#F2F8EC] text-[#3B6E16] border-[#65B32E]/40 font-extrabold shadow-2xs'
+                  : 'text-slate-800 hover:text-[#65B32E] hover:bg-slate-50 border-slate-100'
+              }`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t('nav.products')}
+              <span>{t('nav.products')}</span>
+              {isActive('/products') && <span className="w-2 h-2 rounded-full bg-[#65B32E]" />}
             </Link>
 
             {/* Quick Mobile Product Chips */}
-            <div className="grid grid-cols-2 gap-2 pl-2 pb-2">
+            <div className="grid grid-cols-2 gap-2 pl-1 py-1">
               <Link
                 href="/products/pp-frp-chemical-reaction-vessel"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-[11px] font-semibold text-slate-600 bg-slate-50 p-2 rounded-xl border border-slate-200 hover:text-[#65B32E]"
+                className="text-[11px] font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-200 hover:text-[#65B32E] hover:border-[#65B32E]/30 transition-colors"
               >
                 🧪 Reaction Vessels
               </Link>
               <Link
                 href="/products/frp-vertical-chemical-storage-tank"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-[11px] font-semibold text-slate-600 bg-slate-50 p-2 rounded-xl border border-slate-200 hover:text-[#65B32E]"
+                className="text-[11px] font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-200 hover:text-[#65B32E] hover:border-[#65B32E]/30 transition-colors"
               >
                 🛢️ Storage Tanks
               </Link>
               <Link
                 href="/products/pp-frp-packed-bed-scrubber"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-[11px] font-semibold text-slate-600 bg-slate-50 p-2 rounded-xl border border-slate-200 hover:text-[#65B32E]"
+                className="text-[11px] font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-200 hover:text-[#65B32E] hover:border-[#65B32E]/30 transition-colors"
               >
                 💨 Fume Scrubbers
               </Link>
               <Link
                 href="/products/hdpe-spiral-acid-tanker"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-[11px] font-semibold text-slate-600 bg-slate-50 p-2 rounded-xl border border-slate-200 hover:text-[#65B32E]"
+                className="text-[11px] font-semibold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-200 hover:text-[#65B32E] hover:border-[#65B32E]/30 transition-colors"
               >
                 🚚 Road Tankers
               </Link>
@@ -493,24 +533,41 @@ export default function Navbar() {
 
             <Link
               href="/gallery"
-              className="block text-lg font-bold text-slate-900 border-b border-slate-100 pb-3"
+              className={`flex items-center justify-between text-base font-bold py-3 px-3.5 rounded-2xl transition-all border ${
+                isActive('/gallery')
+                  ? 'bg-[#F2F8EC] text-[#3B6E16] border-[#65B32E]/40 font-extrabold shadow-2xs'
+                  : 'text-slate-800 hover:text-[#65B32E] hover:bg-slate-50 border-slate-100'
+              }`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t('nav.projects')}
+              <span>{t('nav.projects')}</span>
+              {isActive('/gallery') && <span className="w-2 h-2 rounded-full bg-[#65B32E]" />}
             </Link>
+
             <Link
               href="/about"
-              className="block text-lg font-bold text-slate-900 border-b border-slate-100 pb-3"
+              className={`flex items-center justify-between text-base font-bold py-3 px-3.5 rounded-2xl transition-all border ${
+                isActive('/about')
+                  ? 'bg-[#F2F8EC] text-[#3B6E16] border-[#65B32E]/40 font-extrabold shadow-2xs'
+                  : 'text-slate-800 hover:text-[#65B32E] hover:bg-slate-50 border-slate-100'
+              }`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t('nav.about')}
+              <span>{t('nav.about')}</span>
+              {isActive('/about') && <span className="w-2 h-2 rounded-full bg-[#65B32E]" />}
             </Link>
+
             <Link
               href="/contact"
-              className="block text-lg font-bold text-[#65B32E] border-b border-slate-100 pb-3"
+              className={`flex items-center justify-between text-base font-bold py-3 px-3.5 rounded-2xl transition-all border ${
+                isActive('/contact')
+                  ? 'bg-[#F2F8EC] text-[#3B6E16] border-[#65B32E]/40 font-extrabold shadow-2xs'
+                  : 'text-[#65B32E] bg-white hover:bg-[#F2F8EC]/50 border-[#65B32E]/30'
+              }`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t('nav.contact')}
+              <span>{t('nav.contact')}</span>
+              <ArrowRight className="w-4 h-4 text-[#65B32E]" />
             </Link>
           </div>
 
