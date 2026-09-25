@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView, type Variants } from 'framer-motion';
 import { 
   Quote, 
   Star, 
@@ -146,19 +146,19 @@ const TESTIMONIALS: Testimonial[] = [
 /*  Animation Variants                            */
 /* ────────────────────────────────────────────── */
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
 };
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
 };
 
-const scaleIn = {
+const scaleIn: Variants = {
   hidden: { opacity: 0, scale: 0.92 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } }
 };
 
 /* ────────────────────────────────────────────── */
@@ -248,7 +248,7 @@ export default function TestimonialsSection() {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
                 className="grid grid-cols-1 lg:grid-cols-12"
               >
                 {/* Left: Quote Content */}

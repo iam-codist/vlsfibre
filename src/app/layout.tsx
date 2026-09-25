@@ -31,24 +31,26 @@ const SITE_URL = 'https://vlsfibre.vercel.app';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'VLS Fibre | Industrial FRP & Dual-Laminate Process Equipment',
+    default: 'VLS Fibre | Industrial FRP & Dual-Laminate Chemical Equipment India',
     template: '%s | VLS Fibre'
   },
   description:
-    'VLS Fibre — India\'s leading manufacturer of custom FRP & dual-laminate chemical process equipment. Storage tanks up to 120 kL, reaction vessels, fume scrubbers, HDPE spiral tankers. ASME RTP-1 & BS 4994 compliant.',
+    "VLS Fibre — India's premier manufacturer of custom FRP & dual-laminate chemical process equipment. IS 2825, IS 10661 & ASME RTP-1 compliant storage tanks up to 120 kL, reaction vessels, CPCB fume scrubbers, and PESO road tankers. Plants in Vadodara (Gujarat) & Cuddalore (Tamil Nadu).",
   keywords: [
     'VLS Fibre',
     'FRP tanks India',
-    'dual laminate tanks',
-    'chemical reaction vessels',
-    'FRP storage tank manufacturer',
-    'fume scrubbers',
-    'HDPE spiral acid tanker',
-    'PP FRP vessel',
-    'industrial lining',
+    'dual laminate tanks India',
+    'chemical reaction vessels Gujarat',
+    'FRP storage tank manufacturer India',
+    'IS 2825 unfired pressure vessel',
+    'IS 10661 chemical storage tank',
+    'CPCB fume scrubbers',
+    'PESO acid road tanker',
+    'PP FRP vessel Vadodara',
+    'industrial lining Tamil Nadu',
     'ASME RTP-1',
     'BS 4994',
-    'corrosion resistant equipment',
+    'corrosion resistant equipment India',
     'PPRC HDPE electro fusion pipelines'
   ],
   authors: [{ name: 'VLS Fibre Engineering Desk' }],
@@ -59,11 +61,12 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: SITE_URL,
     siteName: 'VLS Fibre Industries',
-    title: 'VLS Fibre — Custom FRP & Dual-Laminate Process Equipment',
-    description: 'India\'s premier manufacturer of corrosion-resistant FRP storage tanks, reaction vessels, fume scrubbers & HDPE spiral tankers. ASME RTP-1 | BS 4994 | ISO 9001:2015 certified.',
+    title: 'VLS Fibre — Industrial FRP & Dual-Laminate Chemical Process Equipment',
+    description: "India's premier manufacturer of corrosion-resistant FRP storage tanks (up to 120 kL), reaction vessels, CPCB scrubbers & PESO HDPE tankers. IS 2825 | IS 10661 | ASME RTP-1 | ISO 9001:2015.",
     images: [
       {
-        url: '/images/brand/og-cover.jpg',
+        url: 'https://vlsfibre.vercel.app/images/brand/og-cover.jpg',
+        secureUrl: 'https://vlsfibre.vercel.app/images/brand/og-cover.jpg',
         width: 1200,
         height: 630,
         alt: 'VLS Fibre — Industrial FRP & Dual-Laminate Process Equipment | Storage Tanks, Reaction Vessels, Fume Scrubbers',
@@ -73,9 +76,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VLS Fibre — Custom FRP & Dual-Laminate Process Equipment',
-    description: 'India\'s premier manufacturer of corrosion-resistant FRP storage tanks, reaction vessels & fume scrubbers. ASME RTP-1 | BS 4994.',
-    images: ['/images/brand/og-cover.jpg'],
+    title: 'VLS Fibre — Industrial FRP & Dual-Laminate Chemical Process Equipment',
+    description: "India's premier manufacturer of corrosion-resistant FRP storage tanks, reaction vessels & CPCB fume scrubbers. IS 2825 | IS 10661 | ASME RTP-1.",
+    images: ['https://vlsfibre.vercel.app/images/brand/og-cover.jpg'],
     creator: '@vlsfibre',
   },
   robots: {
@@ -116,6 +119,16 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
         <link rel="icon" href="/favicon.png?v=3" type="image/png" sizes="32x32" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" sizes="180x180" />
+        {/* Explicit Social / WhatsApp Link Preview Fallback Tags */}
+        <meta property="og:image" content="https://vlsfibre.vercel.app/images/brand/og-cover.jpg" />
+        <meta property="og:image:secure_url" content="https://vlsfibre.vercel.app/images/brand/og-cover.jpg" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="VLS Fibre — Industrial FRP & Dual-Laminate Process Equipment" />
+        <meta itemProp="image" content="https://vlsfibre.vercel.app/images/brand/og-cover.jpg" />
+        <meta name="twitter:image" content="https://vlsfibre.vercel.app/images/brand/og-cover.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
       </head>
       <body
         suppressHydrationWarning

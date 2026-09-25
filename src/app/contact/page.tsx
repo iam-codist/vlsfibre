@@ -152,6 +152,35 @@ export default function ContactPage() {
                 Turnkey electro-fusion welding, buried acid effluent pipelines, manifold manifolds, and dual-laminate header installations performed on-site by certified fusion technicians.
               </p>
             </div>
+
+            {/* Pan-India B2B Commercial & Logistics Card */}
+            <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-3">
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 block">
+                COMMERCIAL &amp; LOGISTICS COMPLIANCE
+              </span>
+              <div className="grid grid-cols-2 gap-3 text-xs">
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 space-y-0.5">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase block">GST Registration</span>
+                  <span className="font-semibold text-slate-900 block">GSTIN Registered B2B</span>
+                  <span className="text-[11px] text-slate-500 block">HSN 3925 / 3926</span>
+                </div>
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 space-y-0.5">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase block">Pan-India Freight</span>
+                  <span className="font-semibold text-slate-900 block">Transit Insured Logistics</span>
+                  <span className="text-[11px] text-slate-500 block">All Major SEZ / GIDC / SIPCOT</span>
+                </div>
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 space-y-0.5">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase block">Design Standards</span>
+                  <span className="font-semibold text-slate-900 block">IS 2825 &bull; IS 10661</span>
+                  <span className="text-[11px] text-slate-500 block">CPCB &bull; ASME RTP-1</span>
+                </div>
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 space-y-0.5">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase block">Engineering Hours</span>
+                  <span className="font-semibold text-slate-900 block">9:00 AM – 7:00 PM IST</span>
+                  <span className="text-[11px] text-[#3B6E16] font-bold block">24/7 Breakdown Cell</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

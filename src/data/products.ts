@@ -18,7 +18,7 @@ export const PRODUCTS: Product[] = [
       temperatureRange: '-10°C to +110°C continuous',
       resinMatrix: 'Derakane 411-350 / 470 Vinyl Ester',
       wallThickness: 'Inner PP: 5-8 mm | Outer FRP: 12-28 mm',
-      designStandards: ['BS 4994:1987', 'ASME Section X', 'EN 13121'],
+      designStandards: ['IS 2825 (Unfired Pressure Vessels)', 'BS 4994:1987', 'ASME Section X', 'EN 13121'],
       chemicalResistance: ['Hydrochloric Acid (HCl 33%)', 'Sulfuric Acid (H2SO4 70%)', 'Sodium Hypochlorite', 'Chlorinated Solvents'],
       sparkTestVoltage: '15 kV - 20 kV Non-Destructive High Voltage Test',
       capacitiesAvailable: '500 Liters to 40,000 Liters (0.5 kL - 40 kL)'
@@ -49,7 +49,7 @@ export const PRODUCTS: Product[] = [
       temperatureRange: 'Ambient up to 95°C',
       resinMatrix: 'Fire-Retardant Vinyl Ester (Derakane 510A)',
       wallThickness: '8 mm to 24 mm engineered load profile',
-      designStandards: ['BS 4994:1987', 'ASTM D3299', 'CPCB Guidelines'],
+      designStandards: ['CPCB Guidelines / State PCB Norms', 'IS 10661', 'BS 4994:1987', 'ASTM D3299'],
       chemicalResistance: ['Chlorine (Cl2)', 'Hydrogen Chloride (HCl)', 'Sulfur Dioxide (SO2)', 'Nitric Acid Fumes (NOx)', 'Ammonia (NH3)'],
       sparkTestVoltage: '15 kV spark tested',
       capacitiesAvailable: '500 CFM to 65,000 CFM (850 to 110,000 m³/hr)'
@@ -80,7 +80,7 @@ export const PRODUCTS: Product[] = [
       temperatureRange: '-5°C to +85°C',
       resinMatrix: 'Premium Vinyl Ester with Graphite Anti-Static Additive (Optional)',
       wallThickness: 'Casing: 8-15 mm | Impeller: solid PP reinforced hub',
-      designStandards: ['AMCA 210', 'IS 4894', 'BS 4994'],
+      designStandards: ['IS 4894 (Industrial Centrifugal Fans)', 'AMCA 210', 'BS 4994'],
       chemicalResistance: ['Wet Chlorine', 'Sulfuric Acid Mist', 'Caustic Aerosols', 'Organic Solvents'],
       sparkTestVoltage: '12 kV on dual-laminate housings',
       capacitiesAvailable: 'Static Pressure up to 650 mm WG | Flow: 500 to 50,000 CFM'
@@ -110,7 +110,7 @@ export const PRODUCTS: Product[] = [
       temperatureRange: '-20°C to +105°C',
       resinMatrix: 'Isophthalic / Vinyl Ester C-Glass veil barrier',
       wallThickness: 'Engineered gradient: 8 mm top to 32 mm base knuckle',
-      designStandards: ['ASTM D3299', 'BS 4994:1987', 'ASME RTP-1'],
+      designStandards: ['IS 10661 (Chemical Storage Tanks)', 'IS 6746', 'BS 4994:1987', 'ASME RTP-1', 'ASTM D3299'],
       chemicalResistance: ['Hydrochloric Acid 33%', 'Sulfuric Acid up to 98%', 'Alum', 'Phosphoric Acid 85%', 'Ferric Chloride'],
       sparkTestVoltage: '100% Barcol Hardness & Resin Rich Veil Verification',
       capacitiesAvailable: '1,000 Liters to 120,000 Liters (1 kL - 120 kL)'
@@ -140,7 +140,7 @@ export const PRODUCTS: Product[] = [
       temperatureRange: 'Ambient up to 85°C bath operating temperature',
       resinMatrix: 'Isophthalic polyester with chemical resistance veil',
       wallThickness: '12 mm to 30 mm PP sheet + 8 mm FRP encasement',
-      designStandards: ['DVS 2205 (German Thermoplastic Vessel Standard)', 'BS 4994'],
+      designStandards: ['IS 10661', 'DVS 2205 (German Thermoplastic Vessel Standard)', 'BS 4994'],
       chemicalResistance: ['Hydrochloric Acid 15-20% at 60°C', 'Sulfuric Acid 10-18% at 75°C', 'Flux and Passivation Salts'],
       sparkTestVoltage: '15 kV high-voltage seam spark testing',
       capacitiesAvailable: 'Length up to 18 meters | Custom dimensions per batch crane cycle'
@@ -170,7 +170,7 @@ export const PRODUCTS: Product[] = [
       temperatureRange: '-30°C to +65°C',
       resinMatrix: 'Virgin PE-100 High Density Polyethylene',
       wallThickness: '25 mm to 45 mm solid profile',
-      designStandards: ['PESO Regulations', 'EN 13575', 'DVS 2205'],
+      designStandards: ['PESO Regulations (Govt. of India)', 'Central Motor Vehicles Rules (CMVR)', 'IS 4984', 'EN 13575'],
       chemicalResistance: ['Commercial HCl (Hydrochloric)', 'Caustic Soda Lye 48%', 'Liquid Alum', 'Spent Acids'],
       sparkTestVoltage: 'Continuous weld ultrasonic & spark inspection',
       capacitiesAvailable: '10,000 Liters to 35,000 Liters (10 kL - 35 kL)'
@@ -200,7 +200,7 @@ export const PRODUCTS: Product[] = [
       temperatureRange: '-20°C to +135°C',
       resinMatrix: 'Derakane 470 Epoxy Novolac Vinyl Ester',
       wallThickness: '3 mm - 4 mm fabric-backed PVDF + 14-22 mm FRP',
-      designStandards: ['BS 4994:1987 Category I', 'ASME RTP-1'],
+      designStandards: ['IS 2825', 'BS 4994:1987 Category I', 'ASME RTP-1'],
       chemicalResistance: ['Wet Halogens (Bromine, Chlorine)', 'Hot Nitric Acid', 'Chromic Acid', 'Chlorinated Organics'],
       sparkTestVoltage: '20 kV spark tested across entire PVDF weld matrix',
       capacitiesAvailable: '500 Liters to 20,000 Liters'
@@ -230,7 +230,7 @@ export const PRODUCTS: Product[] = [
       temperatureRange: '-40°C to +230°C',
       resinMatrix: 'Virgin Dupont / Daikin PTFE Paste Extruded Liner',
       wallThickness: 'Liner: 3.5 mm - 6.0 mm | Steel: Sch 40 / Sch 80',
-      designStandards: ['ASTM F1545', 'ASME B16.5 Class 150 / 300#'],
+      designStandards: ['IS 4984 / IS 14885', 'ASTM F1545', 'ASME B16.5 Class 150 / 300#'],
       chemicalResistance: ['Universal pH 0 to 14', 'Aqua Regia', 'Hydrofluoric Acid (HF)', 'Thionyl Chloride'],
       sparkTestVoltage: '15 kV spark tested, 100% pinhole free',
       capacitiesAvailable: '25 mm (1") NB up to 300 mm (12") NB | Spools up to 3 meters'
@@ -260,7 +260,7 @@ export const PRODUCTS: Product[] = [
       temperatureRange: '-30°C to +200°C',
       resinMatrix: 'PFA / High Purity Virgin Teflon',
       wallThickness: '3.5 mm to 5.0 mm dovetail locked liner',
-      designStandards: ['API 598', 'ISO 5211 Actuator Pad', 'BS EN 12266-1'],
+      designStandards: ['IS 13095 / IS 14846', 'API 598', 'ISO 5211 Actuator Pad', 'BS EN 12266-1'],
       chemicalResistance: ['Concentrated Nitric Acid', 'Hydrofluoric Acid', 'Oleum', 'Wet Chlorine Gas'],
       sparkTestVoltage: '20 kV spark tested on 100% production run',
       capacitiesAvailable: 'DN15 (1/2") to DN200 (8") | Flange ANSI 150#'
@@ -290,7 +290,7 @@ export const PRODUCTS: Product[] = [
       temperatureRange: '-10°C to +95°C',
       resinMatrix: 'Vinyl Ester Derakane 411',
       wallThickness: 'Bottom Plate: 20 mm PP | Shell: 14 mm FRP',
-      designStandards: ['BS 4994', 'ASME Section VIII Div 1 rules adapted'],
+      designStandards: ['IS 2825 (Unfired Vessels)', 'BS 4994', 'ASME Section VIII Div 1 rules adapted'],
       chemicalResistance: ['Acidic Cakes & Slurries', 'Brine', 'Solvents (MDC, Toluene, Acetone with appropriate liner)'],
       sparkTestVoltage: '15 kV test verified',
       capacitiesAvailable: 'Diameter 600 mm to 2,500 mm (Filtering area 0.28 to 5 m²)'
@@ -320,7 +320,7 @@ export const PRODUCTS: Product[] = [
       temperatureRange: '-20°C to +80°C',
       resinMatrix: 'Isophthalic polyester with UV stabilizers',
       wallThickness: '4.0 mm to 6.5 mm uniform moulding',
-      designStandards: ['IS 6746', 'IP 55 Protective Standard Compliant'],
+      designStandards: ['IS 13947 / IS/IEC 60529', 'IS 6746', 'IP 55 Protective Standard Compliant'],
       chemicalResistance: ['Atmospheric Acid Mists', 'Coastal Saline Air', 'Caustic Splash'],
       sparkTestVoltage: 'High-gloss gelcoat dielectric finish',
       capacitiesAvailable: 'Standard Frame Sizes 63 to 355M (0.25 kW to 315 kW)'
@@ -350,7 +350,7 @@ export const PRODUCTS: Product[] = [
       temperatureRange: '-30°C to +90°C',
       resinMatrix: 'Light-Stabilized Isophthalic Resin with Class 1 Fire Retardant option',
       wallThickness: '1.5 mm, 2.0 mm, 2.5 mm, 3.0 mm',
-      designStandards: ['ASTM D3841', 'IS 12866'],
+      designStandards: ['IS 12866 (Translucent FRP Roofing Sheets)', 'ASTM D3841'],
       chemicalResistance: ['Acid Vapors', 'Sulfur Smoke', 'Coastal Saline Humidity', 'Industrial Smog'],
       sparkTestVoltage: 'High electrical insulation',
       capacitiesAvailable: 'Custom lengths up to 12 meters per sheet'

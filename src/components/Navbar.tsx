@@ -141,12 +141,12 @@ export default function Navbar() {
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1.5 font-medium">
                 <Factory className="w-3.5 h-3.5 text-[#65B32E]" />
-                <span>Vadodara &amp; Dahej Works (Gujarat) &bull; ISO 9001:2015 Accredited</span>
+                <span>Vadodara (Gujarat) &amp; Cuddalore (TN) Works &bull; ISO 9001:2015</span>
               </span>
               <span className="text-slate-600">&bull;</span>
               <span className="flex items-center gap-1.5 font-medium text-slate-400">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#65B32E]" />
-                <span>ASME RTP-1 &bull; BS 4994 &bull; 20 kV Spark Tested</span>
+                <span>IS 2825 / IS 10661 &bull; ASME RTP-1 &bull; CPCB Compliant</span>
               </span>
             </div>
 

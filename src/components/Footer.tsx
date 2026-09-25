@@ -20,8 +20,9 @@ export default function Footer() {
             </p>
             <div className="pt-2 text-xs text-slate-400 space-y-1">
               <p className="text-[#65B32E] font-bold">PPRC &bull; HDPE Electric Fusion Pipe Line Work</p>
-              <p>Standards: ASME Section X &bull; ASME RTP-1 &bull; BS 4994:1987</p>
-              <p>Quality: ISO 9001:2015 &bull; 100% Spark Tested Seams</p>
+              <p>Standards: IS 2825 &bull; IS 10661 &bull; IS 6746 &bull; ASME RTP-1 &bull; BS 4994 &bull; CPCB</p>
+              <p>Quality: ISO 9001:2015 &bull; 100% Spark Tested &bull; GST B2B Compliant</p>
+              <p className="text-slate-400">Pan-India Turnkey Supply &bull; Gujarat (Vadodara) &bull; Tamil Nadu (Cuddalore)</p>
             </div>
           </div>
 
