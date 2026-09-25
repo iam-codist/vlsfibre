@@ -40,22 +40,70 @@
   letter-spacing: -0.025em;
 }
 
-/* Clean Custom Scrollbar */
+/* ===== Elite Custom Scrollbar — Reveal on Hover ===== */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+*:hover {
+  scrollbar-color: rgba(148, 163, 184, 0.45) transparent;
+}
+
+/* Webkit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f8fafc;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  background: rgba(148, 163, 184, 0);
+  border-radius: 100px;
+  transition: background 0.3s ease;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #65b32e;
+/* Reveal scrollbar on body/html hover */
+body:hover::-webkit-scrollbar-thumb,
+html:hover::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+}
+
+body:hover::-webkit-scrollbar-thumb:hover,
+html:hover::-webkit-scrollbar-thumb:hover {
+  background: rgba(101, 179, 46, 0.6);
+}
+
+body:hover::-webkit-scrollbar-thumb:active,
+html:hover::-webkit-scrollbar-thumb:active {
+  background: rgba(101, 179, 46, 0.8);
+}
+
+/* Inner scrollable containers */
+[data-lenis-prevent]::-webkit-scrollbar {
+  width: 4px;
+}
+
+[data-lenis-prevent]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+[data-lenis-prevent]::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 100px;
+}
+
+[data-lenis-prevent]:hover::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+}
+
+[data-lenis-prevent]:hover::-webkit-scrollbar-thumb:hover {
+  background: rgba(101, 179, 46, 0.5);
 }
 
 /* Subtle Industrial Engineering Background Patterns (Client Brochure Theme) */
