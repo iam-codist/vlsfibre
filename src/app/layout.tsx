@@ -9,6 +9,7 @@ import { LanguageProvider } from '@/context/LanguageContext';
 import CookieBanner from '@/components/ui/CookieBanner';
 import AutoLeadModal from '@/components/forms/AutoLeadModal';
 import SiteLoader from '@/components/ui/SiteLoader';
+import BackToTop from '@/components/ui/BackToTop';
 import Script from 'next/script';
 
 const inter = Inter({
@@ -129,6 +130,7 @@ export default function RootLayout({
             <AIChatWidget />
             <AutoLeadModal />
             <CookieBanner />
+            <BackToTop />
           </SmoothScroll>
         </LanguageProvider>
 
